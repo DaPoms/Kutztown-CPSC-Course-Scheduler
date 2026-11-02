@@ -39,9 +39,8 @@ int main()
 {
 	int numFaculty = 10;
 	int numSlots = 5;
-	vector<Course> Course = { {1,50}, {2, 50}, {3, 50}, {4,50}, {5, 50} };
-	cout << "test";
-
+	vector<Course> courses = { {1,50}, {2, 50}, {3, 50}, {4,50}, {5, 50} };
+	runCPSAT(numFaculty, courses, numSlots);
 }
 
 /* Prototype simplifications: 
