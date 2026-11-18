@@ -104,6 +104,16 @@ void runCPSAT(vector<Course>& courses, vector<Faculty>& faculty, vector<Day>& da
 	
 
 
+	// running solver
+	const CpSolverResponse result = Solve(model.Build()); // Theres also a Solve with param function for when we get to it (for adding time limits and various settings)
+	if(result.status() == CpSolverStatus::FEASIBLE || result.status() == CpSolverStatus::OPTIMAL) // Optimal is for when/if we add an objective (something to maximize/minimize, such as deviation from the original schedule with schedule updating)
+	{
+		// Extract the solution results here
+	}
+	else
+	{
+		cout << "PLACEHOLDER: This was an invalid problem, or a solution simply was not found in the available time";
+	}
 }
 
 int main()
@@ -140,3 +150,4 @@ int main()
 // Issue: If solving whole problem as separate semesters, room numbers would be an issue to account for
 // Solution: Solve as two separate semester back to back via warm start (reducing required courses by what was used up)
 
+// In our actual development version, days should be SEPARATE (mon, tues, wed....). Currently it is connected
